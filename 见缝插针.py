@@ -67,7 +67,7 @@ def draw_needles():
         pencolor("green")  # 先画绿色是为了和圆盘的颜色相同，从而显示出针是插在了圆盘表面
         pendown()
         forward(80)  # 此处的100也是圆盘的半径长度
-        pencolor1 = pencolor("orange")
+        pencolor("orange")
         forward(80)
         penup()
 
@@ -96,7 +96,7 @@ def stop():
     global n
     global needles
     for i in range(n):
-        if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3.5:  # 如果新插入的针和已有的针角度相差小于3度
+        if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
             draw_a_circle('red')  # 圆盘变成红色
             time.sleep(1.5)  # 暂停1.5s
             exitonclick()  # 等待点击结束
