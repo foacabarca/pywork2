@@ -12,8 +12,9 @@ def write_idioms():
     i = 192
     count = 0
     pin_yin = ['zhen']
+    end_word = "针"
     for f in file.readlines():
-        if lp(f[0]) == pin_yin and f[3] != " " and count < 9:
+        if lp(f[0]) == pin_yin and f[3] != " " and count < 10:
             goto(200, i)
             pendown()
             write(f[0:4], font=("Consolas", 13, "normal"))
@@ -21,5 +22,11 @@ def write_idioms():
             penup()
             i = i - 28
             pin_yin = lp(f[3])
+            end_word = f[3]
+    if count == 9:
+        goto(200, i-20)
+        pendown()
+        write("接龙结束", font=("Consolas", 13, "normal"))
+        penup()
     file.close()
 
