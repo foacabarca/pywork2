@@ -24,6 +24,7 @@ def draw_barcode(bar_code):
 def write_information():
     penup()
     goto(80, -160)
+    pencolor("black")
     pendown()
     write("计203  宋加运  42024130", font=("Consolas", 12, "normal"))
     penup()
