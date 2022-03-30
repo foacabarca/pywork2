@@ -7,7 +7,8 @@ import time
 import chengyujielong
 import barcode
 
-bar_code = "0101001000110010011000110100100110100011001100110110000101110010111001011100101110010111001001010"
+bar_code = "01010010001100100110001101001001101000110011001" \
+           "10110000101110010111001011100101110010111001001010"
 n = 0  # 全局变量n，方便计算针的数量，方便写循环
 needles = []  # 存储所有针
 judge = 0
@@ -126,8 +127,8 @@ def main():
         if judge == 1:
             break
         tracer(True)
-    speed(4)
-    pencolor("black")
+    speed(4)  # 设置B区和C区的turtle速度
+    pencolor("black")  # 设置B区和C区的画笔颜色为黑色
     chengyujielong.write_idioms()
     barcode.write_information()
     barcode.draw_barcode(bar_code)
