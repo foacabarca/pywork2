@@ -3,8 +3,8 @@ from turtle import *
 
 
 def find_idiom(all_idioms_txt, idioms_txt, pin_yin):
-    with open(all_idioms_txt, "r") as file:
-        with open(idioms_txt, "a") as idioms:
+    with open(all_idioms_txt, encoding="utf-8", mode="r") as file:
+        with open(idioms_txt, encoding="utf-8", mode="a") as idioms:
             for f in file.readline():
                 if lp(f[0]) == pin_yin:
                     idioms.write(f[0:4])
@@ -15,7 +15,7 @@ def find_idiom(all_idioms_txt, idioms_txt, pin_yin):
 def write_idiom(idioms_txt):
     i = 200
     penup()
-    with open(idioms_txt, "r") as idioms:
+    with open(idioms_txt, encoding="utf-8", mode="r") as idioms:
         for idiom in idioms.readline():
             goto(200, i)
             pendown()

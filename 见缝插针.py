@@ -13,6 +13,7 @@ needles = []  # 存储所有针
 pin_yin = 'zhen'
 all_idioms_txt = "chengyu_utf8.txt"
 idioms_txt = "idioms.txt"
+judge = 0
 
 
 class Needles:
@@ -94,12 +95,13 @@ def new_needle():
         n = n + 1
 
 
-def stop(judge):
+def stop():
     """
     判断新插入的针是否和已有的针插在一起（这里指角度相差小于3度），
     若插在一起则圆盘变红，程序停止，等待鼠标点击结束
     """
     global n
+    global judge
     global needles
     for i in range(n):
         if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
@@ -113,7 +115,6 @@ def stop(judge):
 def main():
     hideturtle()  # 隐藏海龟的图标
     speed(0)  # 绘画速度最快
-    judge = 0
     # 每次循环针的角度加1，默认循环50*360次，即50圈
     for r in range(0, 18000):
         tracer(False)  # 隐藏绘图，直接显示绘画结果
@@ -124,10 +125,10 @@ def main():
         spin_needles()
         draw_needles()
         time.sleep(0.01)
-        tracer(True)
-        stop(judge)
+        stop()
         if judge == 1:
             break
+        tracer(True)
     chengyujielong.find_idiom(all_idioms_txt, idioms_txt, pin_yin)
     chengyujielong.write_idiom(idioms_txt)
     barcode.write_information()
