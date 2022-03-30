@@ -5,16 +5,16 @@ from turtle import *
 def write_idioms():
     file = open("chengyu_utf8.txt", encoding="utf-8", mode="r")
     penup()
-    goto(200, 220)
+    goto(200, 250)
     pendown()
     write("见缝插针", font=("Consolas", 13, "normal"))
     penup()
-    i = 192
+    i = 222
     count = 0
     pin_yin = ['zhen']
     end_word = "针"
     for f in file.readlines():
-        if lp(f[0]) == pin_yin and f[3] != " " and count < 10:
+        if lp(f[0]) == pin_yin and f[3] != " " and count < 10 and f[0] != end_word:
             goto(200, i)
             pendown()
             write(f[0:4], font=("Consolas", 13, "normal"))
@@ -23,10 +23,23 @@ def write_idioms():
             i = i - 28
             pin_yin = lp(f[3])
             end_word = f[3]
-    if count == 9:
-        goto(200, i-20)
-        pendown()
-        write("接龙结束", font=("Consolas", 13, "normal"))
-        penup()
     file.close()
+    if count < 10:
+        file2 = open("chengyu_utf8.txt", encoding="utf-8", mode="r")
+        for f2 in file2.readlines():
+            if lp(f2[0]) == pin_yin and f2[3] != " " and count < 10 and f2[0] != end_word:
+                goto(200, i)
+                pendown()
+                write(f2[0:4], font=("Consolas", 13, "normal"))
+                count = count + 1
+                penup()
+                i = i - 28
+                pin_yin = lp(f2[3])
+                end_word = f2[3]
+        file2.close()
+    if count == 10:
+        goto(180, i-10)
+        pendown()
+        write("接龙结束", font=("Consolas", 15, "normal"))
+        penup()
 

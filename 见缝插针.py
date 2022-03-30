@@ -102,7 +102,7 @@ def stop():
     global needles
     for i in range(n):
         if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
-            draw_a_circle('red')  # 圆盘变成红色
+            draw_a_circle('pink')  # 圆盘变成红色
             judge = 1
             break
             # time.sleep(1.5)  # 暂停1.5s
@@ -112,8 +112,8 @@ def stop():
 def main():
     hideturtle()  # 隐藏海龟的图标
     speed(0)  # 绘画速度最快
-    # 每次循环针的角度加1，默认循环50*360次，即50圈
-    for r in range(0, 18000):
+    # 每次循环针的角度加1，默认循环10*360次，即10圈
+    for r in range(0, 3600):
         tracer(False)  # 隐藏绘图，直接显示绘画结果
         clear()  # 清屏，接着将更新后的针画出来
         draw_a_circle('green')
@@ -126,7 +126,7 @@ def main():
         if judge == 1:
             break
         tracer(True)
-    speed(6)
+    speed(4)
     pencolor("black")
     chengyujielong.write_idioms()
     barcode.write_information()

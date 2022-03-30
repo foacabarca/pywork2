@@ -6,7 +6,6 @@ def draw_barcode(bar_code):
     w = 3
     x = 50
     y = -290
-    speed(0)
     penup()
     for i in bar_code:
         fillcolor("black" if i == "1" else "white")
