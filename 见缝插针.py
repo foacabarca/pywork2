@@ -1,10 +1,5 @@
 # ！python3
 # coding=utf8
-"""
-Project: 见缝插针
-Author: 宋加运
-Date: 2022/3/2 22:09
-"""
 
 from turtle import *
 import random
@@ -17,7 +12,7 @@ needles = []  # 存储所有针
 class Needles:
     """ 包含针的长度和角度 """
     def __init__(self, length, angle):
-        self.length = 200
+        self.length = 80
         self.angle = 180
 
 
@@ -27,11 +22,11 @@ def draw_a_circle(c):
     param c: 圆的填充颜色
     """
     penup()
-    goto(0, -100)
+    goto(-75, -30)
     setheading(0)
     fillcolor(c)
     begin_fill()
-    circle(100)
+    circle(80)
     end_fill()
     penup()
 
@@ -39,14 +34,14 @@ def draw_a_circle(c):
 def draw_a_needle():
     """ 画出固定于面板左侧的针发射位置 """
     penup()
-    goto(-360, 0)
+    goto(-360, 50)
     pensize(5)
     pencolor('purple')
     pendown()
-    goto(-295, 0)
+    goto(-295, 50)
     pensize(5)
     pencolor('orange')
-    goto(-270, 0)
+    goto(-270, 50)
     penup()
 
 
@@ -66,14 +61,14 @@ def draw_needles():
     i = 0
     for i in range(n):
         penup()
-        goto(0, 0)  # 坐标（0，0）也是圆盘的圆心
+        goto(-75, 50)  # 坐标（0，0）也是圆盘的圆心
         setheading(needles[i].angle)  # 调整海龟的方向，从而画出更新后的针
         pensize(3)
         pencolor("green")  # 先画绿色是为了和圆盘的颜色相同，从而显示出针是插在了圆盘表面
         pendown()
-        forward(100)  # 此处的100也是圆盘的半径长度
-        pencolor("orange")
-        forward(100)
+        forward(80)  # 此处的100也是圆盘的半径长度
+        pencolor1 = pencolor("orange")
+        forward(80)
         penup()
 
 
@@ -88,7 +83,7 @@ def new_needle():
     a = random.randint(0, 100)
     # 如果a < 5，则创建新针并添加到needles中，n也相应加1
     if a < 5:
-        newneedle = Needles(200, 180)
+        newneedle = Needles(80, 180)
         needles.append(newneedle)  # 增加新针
         n = n + 1
 
@@ -101,7 +96,7 @@ def stop():
     global n
     global needles
     for i in range(n):
-        if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
+        if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3.5:  # 如果新插入的针和已有的针角度相差小于3度
             draw_a_circle('red')  # 圆盘变成红色
             time.sleep(1.5)  # 暂停1.5s
             exitonclick()  # 等待点击结束
