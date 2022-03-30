@@ -4,6 +4,8 @@
 from turtle import *
 import random
 import time
+import chengyujielong
+import barcode
 
 n = 0  # 全局变量n，方便计算针的数量，方便写循环
 needles = []  # 存储所有针
