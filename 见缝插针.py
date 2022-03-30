@@ -10,9 +10,6 @@ import barcode
 bar_code = "0101001000110010011000110100100110100011001100110110000101110010111001011100101110010111001001010"
 n = 0  # 全局变量n，方便计算针的数量，方便写循环
 needles = []  # 存储所有针
-pin_yin = 'zhen'
-all_idioms_txt = "chengyu_utf8.txt"
-idioms_txt = "idioms.txt"
 judge = 0
 
 
@@ -129,8 +126,9 @@ def main():
         if judge == 1:
             break
         tracer(True)
-    chengyujielong.find_idiom(all_idioms_txt, idioms_txt, pin_yin)
-    chengyujielong.write_idiom(idioms_txt)
+    speed(6)
+    pencolor("black")
+    chengyujielong.write_idioms()
     barcode.write_information()
     barcode.draw_barcode(bar_code)
     exitonclick()
