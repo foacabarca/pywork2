@@ -16,6 +16,7 @@ judge = 0
 
 class Needles:
     """ 包含针的长度和角度 """
+
     def __init__(self, length, angle):
         self.length = 80
         self.angle = 180
@@ -56,7 +57,7 @@ def spin_needles():
     global n
     i = 0
     for i in range(n):
-        needles[i].angle = needles[i].angle+1
+        needles[i].angle = needles[i].angle + 1
 
 
 def draw_needles():
@@ -102,7 +103,7 @@ def stop():
     global judge
     global needles
     for i in range(n):
-        if abs(n-1-i) > 0 and abs(needles[n-1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
+        if abs(n - 1 - i) > 0 and abs(needles[n - 1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
             draw_a_circle('pink')  # 圆盘变成红色
             judge = 1
             break
@@ -129,9 +130,9 @@ def main():
         tracer(True)
     speed(4)  # 设置B区和C区的turtle速度
     pencolor("black")  # 设置B区和C区的画笔颜色为黑色
-    chengyujielong.write_idioms()
-    barcode.write_information()
-    barcode.draw_barcode(bar_code)
+    chengyujielong.write_idioms()  # 调用函数完成成语接龙
+    barcode.write_information()  # 写下个人信息
+    barcode.draw_barcode(bar_code)  # 画出条形码
     exitonclick()
     done()
 
