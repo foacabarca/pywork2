@@ -6,7 +6,7 @@ def draw_barcode(bar_code):
     将turtle移至合适位置
     画出每一条的边框填充形成条形码
     :param bar_code:二进制形式的条形码字符串
-    :return: none
+    :return: None
     """
     h = 110  # 条形码高度110
     w = 3  # 条形码每一条宽3
@@ -29,7 +29,7 @@ def draw_barcode(bar_code):
 def write_information():
     """
     调整turtle至合适位置写下个人信息
-    :return: none
+    :return: None
     """
     penup()
     goto(80, -160)

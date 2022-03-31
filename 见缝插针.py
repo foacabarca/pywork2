@@ -83,11 +83,12 @@ def new_needle():
     随机发射出一根针，此处需使用到random库，
     产生的随机数 a 为 0 到 100 内的整数，
     若 a < 5，则产生新的一根针，并加入到 needles 中
+    由于随机性，每次运行最终结果不同
     """
     global n
     global needles
     a = random.randint(0, 50)
-    # 如果a < 5，则创建新针并添加到needles中，n也相应加1
+    # 如果a < 4，则创建新针并添加到needles中，n也相应加1
     if a < 4:
         newneedle = Needles(80, 180)
         needles.append(newneedle)  # 增加新针
@@ -103,12 +104,11 @@ def stop():
     global judge
     global needles
     for i in range(n):
-        if abs(n - 1 - i) > 0 and abs(needles[n - 1].angle - needles[i].angle) < 3:  # 如果新插入的针和已有的针角度相差小于3度
+        # 如果新插入的针和已有的针角度相差小于3度
+        if abs(n - 1 - i) > 0 and abs(needles[n - 1].angle - needles[i].angle) < 3:
             draw_a_circle('pink')  # 圆盘变成红色
             judge = 1
             break
-            # time.sleep(1.5)  # 暂停1.5s
-            # exitonclick()  # 等待点击结束
 
 
 def main():
@@ -125,10 +125,9 @@ def main():
         draw_needles()
         time.sleep(0.01)
         stop()
-        if judge == 1:
+        if judge == 1:  # 如果针插到一块，则停止旋转进行成语接龙
             break
         tracer(True)
-    speed(4)  # 设置B区和C区的turtle速度
     pencolor("black")  # 设置B区和C区的画笔颜色为黑色
     chengyujielong.write_idioms()  # 调用函数完成成语接龙
     barcode.write_information()  # 写下个人信息
