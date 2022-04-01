@@ -32,7 +32,7 @@ def write_information():
     :return: None
     """
     penup()
-    goto(80, -160)
+    goto(75, -170)
     pendown()
-    write("计203  宋加运  42024130", font=("Consolas", 12, "normal"))
+    write("计203  宋加运  42024130", font=("Consolas", 16, "bold"))
     penup()
